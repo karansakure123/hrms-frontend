@@ -64,6 +64,7 @@ const Attendance = () => {
                     <th className="px-4 py-2">Date</th>
                     <th className="px-4 py-2">Check In</th>
                     <th className="px-4 py-2">Check Out</th>
+                    <th className="px-4 py-2">Working Time</th>
                     <th className="px-4 py-2">Status</th>
                   </tr>
                 </thead>
@@ -73,6 +74,7 @@ const Attendance = () => {
                       <td className="px-4 py-2 border-t">{new Date(record.date).toLocaleDateString()}</td>
                       <td className="px-4 py-2 border-t">{record.checkIn ? new Date(record.checkIn).toLocaleTimeString() : '-'}</td>
                       <td className="px-4 py-2 border-t">{record.checkOut ? new Date(record.checkOut).toLocaleTimeString() : '-'}</td>
+                      <td className="px-4 py-2 border-t">{record.workingMinutes ? `${Math.floor(record.workingMinutes / 60)}h ${record.workingMinutes % 60}m` : '-'}</td>
                       <td className="px-4 py-2 border-t">
                         <span className={`status ${record.status?.toLowerCase()}`}>
                           {record.status || 'Present'}
