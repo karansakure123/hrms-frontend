@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/leave';
+const API_URL = `${import.meta.env.VITE_API_BASE_URL}/leave`;
 
 // Apply for leave
 export const applyLeave = async (leaveData) => {
