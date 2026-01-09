@@ -29,6 +29,15 @@ export const getLeaveSummary = async () => {
   return response.data;
 };
 
+// Cancel leave
+export const cancelLeave = async (leaveId) => {
+  const token = localStorage.getItem('token');
+  const response = await axios.delete(`${API_URL}/${leaveId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
+
 // Get all leaves (for admin)
 export const getAllLeaves = async () => {
   const token = localStorage.getItem('token');

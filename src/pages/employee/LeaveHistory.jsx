@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
- import { getLeaves } from '../../services/leave.service';
+ import { getLeaves, cancelLeave } from '../../services/leave.service';
 import Spinner from '../../components/common/Spinner';
 
 const LeaveHistory = () => {
@@ -21,6 +21,16 @@ const LeaveHistory = () => {
   useEffect(() => {
     fetchLeaves();
   }, []);
+
+  const handleCancelLeave = async (leaveId) => {
+    try {
+      await cancelLeave(leaveId);
+      toast.success('Leave cancelled successfully');
+      fetchLeaves(); // Refresh the list
+    } catch (error) {
+      toast.error('Failed to cancel leave');
+    }
+  };
 
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
@@ -58,6 +68,7 @@ const LeaveHistory = () => {
                   <th>Reason</th>
                   <th>Status</th>
                   <th>Applied On</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -73,6 +84,16 @@ const LeaveHistory = () => {
                       </span>
                     </td>
                     <td>{new Date(leave.createdAt).toLocaleDateString()}</td>
+                    <td>
+                      {leave.status === 'PENDING' && (
+                        <button
+                          onClick={() => handleCancelLeave(leave._id)}
+                          className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                        >
+                          Cancel
+                        </button>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
