@@ -52,8 +52,7 @@ const AdminSidebar = ({ onToggleSidebar }) => {
 
   return (
     <>
-      {/* Mobile menu button */}
-      <button
+       <button
         className="sidebar-toggle"
         onClick={toggleSidebar}
         aria-label="Toggle sidebar"
@@ -61,8 +60,7 @@ const AdminSidebar = ({ onToggleSidebar }) => {
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Overlay for mobile */}
-      {isOpen && (
+       {isOpen && (
         <div
           className="sidebar-overlay"
           onClick={closeSidebar}
