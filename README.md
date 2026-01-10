@@ -1,6 +1,8 @@
 # Employee Management System - Frontend
 
-Live Url - https://hrapps.netlify.app/
+Deployment Live Url 
+Frontend - https://hrapps.netlify.app/
+Backend - https://hrms-backend-dopd.onrender.com
 This is the frontend part of the Employee Management System. It helps employees and admins manage attendance and leave requests.
 
 ## What it does
