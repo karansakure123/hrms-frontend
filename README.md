@@ -1,5 +1,6 @@
 # Employee Management System - Frontend
 
+Live Url - https://hrapps.netlify.app/
 This is the frontend part of the Employee Management System. It helps employees and admins manage attendance and leave requests.
 
 ## What it does
