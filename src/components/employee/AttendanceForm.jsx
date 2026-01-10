@@ -56,12 +56,12 @@ const AttendanceForm = ({ onSubmit }) => {
 
   return (
  <div className="attendance-form w-full">
-  <h3 className="text-lg font-semibold">Mark Attendance</h3>
-  <p className="text-sm text-gray-600 mb-3">
-    Click the appropriate button to check in or check out
-  </p>
+ <h3 className="text-lg font-semibold">Mark Attendance</h3>
+ <p className="text-sm text-gray-600 mb-3">
+   Click the appropriate button to check in or check out
+ </p>
 
-  <div className="attendance-buttons flex gap-3">
+ <div className="attendance-buttons flex gap-3">
     <button
       onClick={handleCheckIn}
       disabled={loading || todayAttendance?.checkIn}

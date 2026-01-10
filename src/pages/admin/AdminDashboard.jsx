@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { Users, FileText, Calendar, CheckCircle, XCircle } from 'lucide-react';
 import { getAllEmployees, getLeaveRequests, approveLeave, rejectLeave, getAttendanceOverview } from '../../services/admin.service';
+import '../../styles/pages/AdminPages.css';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
@@ -105,7 +106,7 @@ const AdminDashboard = () => {
       {/* Recent Leave Requests */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8">
         <h2 className="text-xl font-semibold mb-4">Recent Leave Requests</h2>
-        <div className="overflow-x-auto">
+        <div className="admin-table-container">
           <table className="min-w-full table-auto border border-gray-200">
             <thead>
               <tr className="bg-gray-50">
@@ -161,7 +162,7 @@ const AdminDashboard = () => {
       {/* Attendance Overview */}
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">Attendance Overview</h2>
-        <div className="overflow-x-auto">
+        <div className="admin-table-container">
           <table className="min-w-full table-auto border border-gray-200">
             <thead>
               <tr className="bg-gray-50">

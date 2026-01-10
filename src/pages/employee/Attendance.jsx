@@ -3,6 +3,7 @@ import { toast } from 'sonner';
 import AttendanceForm from '../../components/employee/AttendanceForm';
  import { getAttendance } from '../../services/attendance.service';
 import Spinner from '../../components/common/Spinner';
+import '../../styles/pages/Attendance.css';
 
 const Attendance = () => {
   const [attendanceRecords, setAttendanceRecords] = useState([]);
@@ -46,7 +47,7 @@ const Attendance = () => {
       </div>
 
       <div className="attendance-content flex flex-col space-y-6">
-        <div className="attendance-form-section w-full">
+        <div className="attendance-form-section">
           <AttendanceForm onSubmit={handleAttendanceSubmit} />
         </div>
 
@@ -57,34 +58,47 @@ const Attendance = () => {
           ) : attendanceRecords.length === 0 ? (
             <p>No attendance records found.</p>
           ) : (
-            <div className="attendance-table overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr>
-                    <th className="px-4 py-2">Date</th>
-                    <th className="px-4 py-2">Check In</th>
-                    <th className="px-4 py-2">Check Out</th>
-                    <th className="px-4 py-2">Working Time</th>
-                    <th className="px-4 py-2">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {attendanceRecords.map((record) => (
-                    <tr key={record._id}>
-                      <td className="px-4 py-2 border-t">{new Date(record.date).toLocaleDateString()}</td>
-                      <td className="px-4 py-2 border-t">{record.checkIn ? new Date(record.checkIn).toLocaleTimeString() : '-'}</td>
-                      <td className="px-4 py-2 border-t">{record.checkOut ? new Date(record.checkOut).toLocaleTimeString() : '-'}</td>
-                      <td className="px-4 py-2 border-t">{record.workingMinutes ? `${Math.floor(record.workingMinutes / 60)}h ${record.workingMinutes % 60}m` : '-'}</td>
-                      <td className="px-4 py-2 border-t">
-                        <span className={`status ${record.status?.toLowerCase()}`}>
-                          {record.status || 'Present'}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+<div
+  className="attendance-table"
+  style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}
+>  <table className="min-w-[600px]">
+    <thead>
+      <tr>
+        <th className="px-4 py-2">Date</th>
+        <th className="px-4 py-2">Check In</th>
+        <th className="px-4 py-2">Check Out</th>
+        <th className="px-4 py-2">Working Time</th>
+        <th className="px-4 py-2">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {attendanceRecords.map((record) => (
+        <tr key={record._id}>
+          <td className="px-4 py-2 border-t">
+            {new Date(record.date).toLocaleDateString()}
+          </td>
+          <td className="px-4 py-2 border-t">
+            {record.checkIn ? new Date(record.checkIn).toLocaleTimeString() : '-'}
+          </td>
+          <td className="px-4 py-2 border-t">
+            {record.checkOut ? new Date(record.checkOut).toLocaleTimeString() : '-'}
+          </td>
+          <td className="px-4 py-2 border-t">
+            {record.workingMinutes
+              ? `${Math.floor(record.workingMinutes / 60)}h ${record.workingMinutes % 60}m`
+              : '-'}
+          </td>
+          <td className="px-4 py-2 border-t">
+            <span className={`status ${record.status?.toLowerCase()}`}>
+              {record.status || 'Present'}
+            </span>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
           )}
         </div>
       </div>

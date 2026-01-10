@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
           // Token is invalid, remove it
           localStorage.removeItem('token');
-          toast.error('Session expired. Please login again.');
         }
       }
       setLoading(false);

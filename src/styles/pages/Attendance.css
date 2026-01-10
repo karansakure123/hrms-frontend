@@ -1,0 +1,30 @@
+/* Attendance Page Styles */
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .attendance-form-section {
+    max-width: 400px;
+   }
+
+  .attendance-table {
+    overflow-x: auto;
+  }
+
+  .attendance-table table {
+    min-width: 600px;
+  }
+
+  .attendance-records-section {
+  overflow-x: auto !important;
+}
+
+.attendance-table {
+  overflow-x: auto !important;
+  width: 100%;
+}
+
+.attendance-table table {
+  min-width: 700px;
+}
+
+}

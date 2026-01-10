@@ -1,31 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { getLeaveSummary } from '../../services/leave.service';
  const LeaveSummary = () => {
   const { user } = useAuth();
-  const [summary, setSummary] = useState({ totalLeaves: 20, usedLeaves: 0, remainingLeaves: 20 });
+  const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSummary = async () => {
       try {
         const data = await getLeaveSummary();
-        setSummary(data);
-      } catch (error) {
-        // Fallback to hardcoded values
         setSummary({
-          totalLeaves: 20,
-          usedLeaves: 0,
-          remainingLeaves: user?.leaveBalance || 20
+          totalLeaves: data.total,
+          usedLeaves: data.used,
+          remainingLeaves: data.remaining
         });
-      } finally {
         setLoading(false);
+      } catch (error) {
+        console.error('Error fetching leave summary:', error);
+        // Keep loading true until real data arrives
+        // Optionally, you can add a retry mechanism here
       }
     };
 
     fetchSummary();
   }, [user]);
 
-  if (loading) {
+  if (loading || !summary) {
     return (
       <div className="leave-summary bg-white rounded-lg shadow-md p-6 border border-gray-200">
         <h3 className="text-lg font-semibold text-gray-800 mb-4">Leave Summary</h3>

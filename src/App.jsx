@@ -36,7 +36,7 @@ const AppContent = () => {
         <Route path="/" element={<Login />} />
       </Routes>
       {!isAuthPage && <Footer />}
-      <Toaster position="top-right" richColors />
+      <Toaster position="top-right" closeButton />
     </>
   );
 };
