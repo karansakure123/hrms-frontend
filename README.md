@@ -1,16 +1,60 @@
-# React + Vite
+# Employee Management System - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend part of the Employee Management System. It helps employees and admins manage attendance and leave requests.
 
-Currently, two official plugins are available:
+## What it does
+- Login and register users
+- Mark attendance (check in/out)
+- Apply for leave
+- View leave history and summary
+- Admin can approve/reject leaves and see employees and leaes and dashboard 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Used
+- React (with Vite for fast development)
+- Tailwind CSS (for nice styles)
+- Axios (to talk to the backend)
+- JWT (for secure login)
 
-## React Compiler
+## How to Run
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Go to the frontend folder:
+ cd frontend
+ 
+2. Install packages:
+ npm install
+ 
+3. Copy the example env file:
+ cp .env.example .env
+ 
+4. Start the app:
+ npm run dev
+ 
 
-## Expanding the ESLint configuration
+The app will run at http://localhost:5173
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+Available Pages
+
+Employee
+Dashboard: Leave summary & recent attendance
+Attendance: Clock In / Clock Out, view attendance history
+Apply Leave: Submit new leave request
+My Leaves: View pending/approved/rejected leave requests
+Profile: View basic info & leave balance
+Logout
+
+
+Admin
+Admin Dashboard: Approve/Reject leaves, view all employees and attendance
+All pages above accessible according to role
+
+
+AI Usage Declaration
+ChatGPT was used for:
+Boilerplate frontend setup
+Debugging API integration errors (Clock In/Clock Out, leave approval/rejection)
+All components, UI, styling, and integration with backend were implemented manually.
+
+Time Spend:
+2 days 
